@@ -1,0 +1,73 @@
+<div class="container" ng-controller="NewMealCtrl">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Enter the Meal Details</div>
+                    <div class="panel-body">
+                        <form class="navbar-form navbar-left" ng-submit="submit()" role="search" name="myForm" novalidate>
+                            <div class="form-group" ng-class="{ 'has-error' : myForm.basemealprice.$invalid && !myForm.basemealprice.$pristine }">
+                                <label> Base Meal Price : $ </label>
+                                <input type="number" class="form-control" name="basemealprice" placeholder="price" ng-model="MealDetails.basePrice" required ng-minlength="2" ng-pattern="/^\d+$/">
+                                <p ng-show="myForm.basemealprice.$invalid && !myForm.basemealprice.$pristine" class="help-block"> Base price is required.</p>
+                                <p> {{MealDetails.basePrice}}</p>
+                            </div>
+                            <br/>
+                            <br/>
+                            <div class="form-group" ng-class="{ 'has-error' : myForm.taxrate.$invalid && !myForm.taxrate.$pristine }">
+                                <label> Tax Rate : % </label>
+                                <input type="number" class="form-control" name="taxrate" placeholder="tax" ng-model="MealDetails.taxRate" required ng-pattern="/^\d+$/">
+                                <p ng-show="myForm.taxrate.$invalid && !myForm.taxrate.$pristine" class="help-block"> Tax rate is required.</p>
+                                <p> {{MealDetails.taxRate}}</p>
+                            </div>
+                            <br/>
+                            <br/>
+                            <div class="form-group" ng-class="{ 'has-error' : myForm.tippercent.$invalid && !myForm.tippercent.$pristine }">
+                                <label> Tip Percentage % : </label>
+                                <input type="number" class="form-control" name="tippercent" placeholder="tip %" ng-model="MealDetails.tipPercent" required ng-pattern="/^\d+$/">
+                                <p ng-show="myForm.tippercent.$invalid && !myForm.tippercent.$pristine" class="help-block"> Tip percent is required.</p>
+                                <p> {{MealDetails.tipPercent}}</p>
+                            </div>
+                            <br/>
+                            <br/>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <button type="submit" class="btn btn-primary" ng-disabled="myForm.$invalid">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+
+                <div class="row">
+                    <div clas="col-sm-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Customer charges</h3>
+                            </div>
+                            <div class="panel-body">
+                                <label>Sub Total : {{CutomerCharges.subTotal}}</label>
+                                <br/>
+                                <br/>
+                                <label> Tip :{{CutomerCharges.waiterTip}} </label>
+                                <br/>
+                                <br/>
+                                <label>---------------------------</label>
+                                <br/>
+                                <br/>
+                                <label>Total : {{CutomerCharges.total}}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4" style="margin-left:35em;">
+            <button class="btn btn-default" ng-click="reset()">Reset</button>
+        </div>
+    </div>
