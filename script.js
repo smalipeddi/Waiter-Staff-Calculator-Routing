@@ -48,7 +48,7 @@ angular.module('MyAPP',['ngRoute'])
 	$scope.MealDetails.taxRate = sharedProperties.mealDetails.taxRate;
 	$scope.MealDetails.tipPercent = sharedProperties.mealDetails.tipPercent;
 	$scope.MealDetails.mealCount = sharedProperties.mealDetails.mealCount;
-    var originMealDetailsForm = angular.copy($scope.MealDetails);
+	var originMealDetailsForm = angular.copy($scope.MealDetails);
 	var origincutomerChargesForm = angular.copy($scope.CutomerCharges);
 	var originWaiterEarningsForm = angular.copy($scope.WaiterEarnings);
 
@@ -68,21 +68,42 @@ angular.module('MyAPP',['ngRoute'])
 
 	}
 
-    }).controller('MyEarningsCtrl',function($scope, sharedProperties){
+}).controller('MyEarningsCtrl',function($scope, sharedProperties){
 
-   $scope.WaiterEarnings = sharedProperties.waiterEarnings;
-   $scope.WaiterEarnings.tipCount = sharedProperties.waiterEarnings.tipCount;
-   $scope.WaiterEarnings.mealCount = sharedProperties.mealDetails.mealCount;
-    
-    
-    $('#formReset').click(function(){
-    	alert("clicked reset")
-        	$('#myForm')[0].reset();
-            /*$scope.WaiterEarnings = {};
-            $scope.CutomerCharges ={};
-            $scope.MealDetails ={};*/
+	$scope.WaiterEarnings = sharedProperties.waiterEarnings;
+	$scope.WaiterEarnings.tipCount = sharedProperties.waiterEarnings.tipCount;
+	$scope.WaiterEarnings.mealCount = sharedProperties.mealDetails.mealCount;
+    $scope.MealDetails = sharedProperties.mealDetails;
+    $scope.CutomerCharges = sharedProperties.cutomerCharges;
+
+	$scope.reset = function(sharedProperties){
+        
+        $scope.WaiterEarnings.MealDetails = 0;
+        $scope.MealDetails.basePrice = 0;
+        $scope.MealDetails.taxRate = 0;
+        $scope.MealDetails.mealCount = 0;
+        $scope.MealDetails.tipCount = 0;
+        $scope.MealDetails.tipPercent = 0;
+        $scope.CutomerCharges.subTotal = 0;
+        $scope.CutomerCharges.waiterTip = 0;
+        $scope.WaiterEarnings.tipCount = 0;
+        $scope.WaiterEarnings.AverageTip = 0;
+        $scope.CutomerCharges.AverageTip = 0; 
+        $scope.WaiterEarnings.mealCount = 0;
+        $scope.CutomerCharges.total = 0;
 
 
-        });
+
+        console.log($scope.WaiterEarnings.MealDetails);
+        console.log($scope.MealDetails.mealCount);
+        console.log($scope.MealDetails.tipCount);
+        console.log($scope.MealDetails.tipPercent);
+
+        /*sharedProperties.MealDetails = ;{};
+        sharedProperties.CutomerCharges = 0;*/
+
+
+	}
+
 });
 
