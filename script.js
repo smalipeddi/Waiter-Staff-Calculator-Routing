@@ -1,9 +1,9 @@
-angular.module('MyAPP',['ngRoute'])
+angular.module('MyAPP',['ngRoute','ngAnimate'])
 .run(function($rootScope, $location) {
-	$rootScope.$on('$routeChangeError', function() {
-		$location.path('/');
-	});
-}).service('sharedProperties', function () {
+	  $rootScope.$on('$routeChangeError', function() {
+        $location.path("/error");
+    });
+   }).service('sharedProperties', function () {
 	var _mealDetails = {};
 	var _cutomerCharges = {};
 	var _waiterEarnings = {};
